@@ -13,3 +13,7 @@ class ServerTests(unittest.TestCase):
         """ Request index.htm """
         r = requests.get('http://localhost:8080')
         self.assertEqual(r.status_code, 200)
+
+if __name__ == '__main__':
+    unittest.main()
+

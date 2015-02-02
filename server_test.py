@@ -1,13 +1,14 @@
 import unittest
 import requests
 import server
+import subprocess
 
 class ServerTests(unittest.TestCase):
     """ Demo how to use ShutShut with tests """
 
     def setUp(self):
         """ Run ShutShut """
-        server.run()
+        subproccess.call(['python', 'server.py'])
 
     def test_index(self):
         """ Request index.htm """

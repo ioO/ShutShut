@@ -3,6 +3,7 @@ import requests
 import server
 from threading import Thread
 
+
 class ServerTests(unittest.TestCase):
     """ Demo how to use ShutShut with tests """
 
@@ -25,4 +26,3 @@ class ServerTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

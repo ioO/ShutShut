@@ -3,9 +3,8 @@ import BaseHTTPServer
 import tempfile
 import os
 
-ROOT_DIR = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), 'www')
-        )
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'www'))
+
 
 class HTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
@@ -20,11 +19,12 @@ class HTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             use a temporary file to log message
         """
         with tempfile.NamedTemporaryFile() as f:
-            message = "%s - - [%s] %s\n" % (self.client_address[0], 
+            message = "%s - - [%s] %s\n" % (self.client_address[0],
                                             self.log_date_time_string(),
-                                            format%args)
+                                            format % args)
             f.write(message)
             f.flush()
+
 
 def run():
     server_address = ('', 8080)

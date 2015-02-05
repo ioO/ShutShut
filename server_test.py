@@ -6,11 +6,12 @@ from threading import Thread
 class ServerTests(unittest.TestCase):
     """ Demo how to use ShutShut with tests """
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         """ Run ShutShut """
-        self.server = Thread(target=server.run)
-        self.server.setDaemon(True)
-        self.server.start()
+        httpd = Thread(target=server.run)
+        httpd.setDaemon(True)
+        httpd.start()
 
     def test_index(self):
         """ Request index.htm """

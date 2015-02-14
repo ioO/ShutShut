@@ -6,7 +6,14 @@ import os
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'www'))
 
 
-class HTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+class HTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler, object):
+    """ HTTPRequestHandler for shutshut
+
+        class inherit from object to avoid error with super() in do_GET()
+
+        @SEE:
+        http://stackoverflow.com/questions/1713038/super-fails-with-error-typeerror-argument-1-must-be-type-not-classobj#answer-18392639
+    """
 
     def translate_path(self, path):
         """ Use another dir as web root """

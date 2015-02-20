@@ -32,6 +32,12 @@ class HTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler, object):
             f.write(message)
             f.flush()
 
+    def do_GET(self):
+        """ Watch for get param to kill the server """
+        if self.path == '/please-kill-me-softly':
+            print self.path
+        super(HTTPRequestHandler, self).do_GET()
+
 
 def run():
     server_address = ('', 8080)

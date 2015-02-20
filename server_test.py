@@ -10,9 +10,14 @@ class ServerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """ Run ShutShut """
-        httpd = Thread(target=server.run)
-        httpd.setDaemon(True)
-        httpd.start()
+        cls.httpd = server.configure()
+        s = Thread(target=server.run(cls.httpd))
+        s.setDaemon(True)
+        s.start()
+
+    @classmethod
+    def tearDownClass(cls):
+        server.shutdown(cls.httpd)
 
     def test_index(self):
         """ Request index.htm """

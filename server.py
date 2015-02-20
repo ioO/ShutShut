@@ -1,7 +1,9 @@
 import SimpleHTTPServer
 import BaseHTTPServer
 import tempfile
+import thread
 import os
+from threading import Thread
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'www'))
 
@@ -45,8 +47,17 @@ def configure(server_address=None):
     httpd = BaseHTTPServer.HTTPServer(server_address, handler)
     return httpd
 
-def run(httpd):
+def shutdown(httpd):
+    thread.start_new_thread(stop_server, (httpd,))
+
+def stop_server(httpd):
+    httpd.shutdown()
+
+def start_server(httpd):
     httpd.serve_forever()
+
+def run(httpd):
+    thread.start_new_thread(start_server, (httpd,))
 
 if __name__ == '__main__':
     httpd = configure()

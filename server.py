@@ -49,4 +49,5 @@ def run(httpd):
     httpd.serve_forever()
 
 if __name__ == '__main__':
-    run()
+    httpd = configure()
+    run(httpd)

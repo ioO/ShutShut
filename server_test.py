@@ -21,12 +21,12 @@ class ServerTests(unittest.TestCase):
 
     def test_index(self):
         """ Request index.htm """
-        r = requests.get('http://localhost:8080')
+        r = requests.get('http://localhost:8181')
         self.assertEqual(r.status_code, 200)
 
     def test_404(self):
         """ Request non-existent resource """
-        r = requests.get('http://localhost:8080/non-existent.htm')
+        r = requests.get('http://localhost:8181/non-existent.htm')
         self.assertEqual(r.status_code, 404)
 
 if __name__ == '__main__':

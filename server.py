@@ -45,5 +45,8 @@ def configure(server_address=None):
     httpd = BaseHTTPServer.HTTPServer(server_address, handler)
     return httpd
 
+def run(httpd):
+    httpd.serve_forever()
+
 if __name__ == '__main__':
     run()

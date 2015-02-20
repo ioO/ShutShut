@@ -40,7 +40,7 @@ class HTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler, object):
 
 def configure(server_address=None):
     if server_address is None:
-        server_address = ('', 8080)
+        server_address = ('', 8181)
     handler = HTTPRequestHandler
     httpd = BaseHTTPServer.HTTPServer(server_address, handler)
     return httpd

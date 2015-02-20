@@ -38,12 +38,12 @@ class HTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler, object):
             print self.path
         super(HTTPRequestHandler, self).do_GET()
 
-
-def run():
-    server_address = ('', 8080)
+def configure(server_address=None):
+    if server_address is None:
+        server_address = ('', 8080)
     handler = HTTPRequestHandler
     httpd = BaseHTTPServer.HTTPServer(server_address, handler)
-    httpd.serve_forever()
+    return httpd
 
 if __name__ == '__main__':
     run()
